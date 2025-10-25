@@ -13,7 +13,9 @@ var Client *dynamodb.Client
 
 func Init() {
 	// load aws configuration
-	cfg, err := config.LoadDefaultConfig(context.TODO())
+    cfg, err := config.LoadDefaultConfig(context.TODO(),
+        config.WithRegion("us-east-1"), // <- set your region here
+    )
 	if err != nil {
 		log.Fatalf("failed to load config: %v", err)
 	}
