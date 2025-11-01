@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { Link } from "react-router"
 
 type User = {
   id: number;
@@ -72,12 +73,20 @@ export default function App() {
       <div className="max-w-4xl mx-auto p-6 rounded shadow bg-gray-800">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-bold">Users</h1>
-          <button
+          <div className="flex gap-2">
+            <button
             onClick={() => setShowModal(true)}
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
           >
             Add User
           </button>
+          <Link
+            to="/notifications"
+            className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
+          >
+            Notifications
+          </Link>
+          </div>
         </div>
 
         <table className="w-full border border-gray-700">
@@ -102,6 +111,12 @@ export default function App() {
                   >
                     Delete
                   </button>
+                   <Link
+                      to={`/notes/${u.id}`}
+                    className="px-3 py-1 bg-green-500 rounded hover:bg-green-600 text-white ml-2"
+                  >
+                    Notes
+                  </Link>
                 </td>
               </tr>
             ))}
